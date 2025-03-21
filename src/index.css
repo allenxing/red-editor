@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 共享的编辑器和预览样式 */
+.ProseMirror,
+.prose-compact {
+  min-height: 500px;
+  padding: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: Arial, sans-serif;
+
+  /* 段落样式 */
+  & p {
+    margin-top: 0.35em;
+    margin-bottom: 0.35em;
+    font-size: 0.875rem !important;
+  }
+
+  /* 标题样式 */
+  & h1 {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  & h2 {
+    font-size: 1.25rem !important;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  & h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  & h4, & h5, & h6 {
+    font-size: 1rem !important;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
+  }
+
+  /* 列表样式 */
+  & ul, & ol {
+    font-size: 0.875rem !important;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  & li {
+    font-size: 0.875rem !important;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+
+  /* 空段落处理 */
+  & p:empty::before {
+    content: "\00a0";
+  }
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.prose-compact {
+  font-size: 0.875rem !important;
+  line-height: 1.5 !important;
+
+  /* Reduce spacing in preview */
+  & p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    min-height: 1.5em; /* 确保空段落有高度 */
+  }
+  
+  & h1 {
+    font-size: 1.5rem !important;
+    font-weight: 600;
+  }
+
+  & h2 {
+    font-size: 1.25rem !important;
+    font-weight: 600;
+  }
+
+  & h3 {
+    font-size: 1.1rem !important;
+    font-weight: 600;
+  }
+
+  & h4, & h5, & h6 {
+    font-size: 1rem !important;
+    font-weight: 600;
+  }
+
+  & h1, & h2, & h3, & h4, & h5, & h6 {
+    margin-top: 0.75em;
+    margin-bottom: 0.35em;
+  }
+
+  & ul, & ol {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
+  & li {
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+  }
+  
+  & > :first-child {
+    margin-top: 0;
+  }
+  
+  & > :last-child {
+    margin-bottom: 0;
+  }
+
+  & p:empty::before {
+    content: "\00a0"; /* 使用不间断空格确保空段落可见 */
+  }
+
+  & br {
+    display: block;
+    content: "";
+    margin-top: 1em;
+  }
+}
+
+/* 确保字体可以正确应用 */
+[style*="font-family"] {
+  font-family: inherit;
+}
