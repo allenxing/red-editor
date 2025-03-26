@@ -107,7 +107,7 @@ const Preview = ({ content }: PreviewProps) => {
             </div>
             <div className="content-wrapper">
               <div className="image-wrapper">
-              <img src="https://sns-webpic-qc.xhscdn.com/202503261457/c43435534603052e482e6d5cf96da8dd/notes_pre_post/1040g3k831dn0pt90gsb049vnnuinpagijho4ae8!nd_dft_wlteh_webp_3" alt="" className="image" />
+              <img src="/assets/example.jpeg" alt="" className="image" />
               </div>
               <div className="inner"> 
                 <div className="title">Plog|新人博主来报道</div>
