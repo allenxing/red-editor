@@ -153,6 +153,12 @@
 }
 
 @layer components {
+  .phone {
+    @apply  w-[286px] h-[582px] bg-[url("/assets/blue.svg")];
+    background-size: 100% 100%;
+    position: relative;
+    margin: 10px auto;
+  }
   .preview-wrapper {
     
     /* @apply w-[282px] h-[612px] bg-[url("assets/natural-titanium.png")] bg-cover bg-center; */
@@ -161,7 +167,15 @@
     @apply  w-[252px] h-[544px]  bg-[url("/assets/note.png")];
     border-radius: 29px;
     background-size: 100% 100%;
-    margin: 10px auto;
+    /* margin: 10px auto; */
+    position: absolute;
+    top: 19px;
+    left: 19px;
+  }
+  .image-wrapper {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
   }
   .account-info {
     /* @apply bg-[url("assets/natural-titanium.png")] bg-cover bg-center; */
@@ -200,6 +214,7 @@
 
     .ProseMirror, .prose-compact {
       padding: 0;
+      min-height: unset;
       & p {
         font-size: 10px;
         text-rendering: optimizeLegibility;

@@ -9,8 +9,21 @@ interface PreviewProps {
   content: string;
 }
 
+const formatDateTime = (date: Date) => {
+  const year = date.getFullYear();
+  // 月份从0开始，需加1并补零
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  // 小时和分钟补零
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  
+  return `${year}-${month}-${day} ${hours}:${minutes}`;
+}
+
 const Preview = ({ content }: PreviewProps) => {
   const [copied, setCopied] = useState(false);
+  const [time, setTime] = useState(new Date());
 
   const editor = useEditor({
     extensions: [
@@ -42,6 +55,7 @@ const Preview = ({ content }: PreviewProps) => {
   useEffect(() => {
     if (editor) {
       editor.commands.setContent(content);
+      setTime(new Date()); // 更新时间为当前时间
     }
   }, [content, editor]);
 
@@ -84,38 +98,32 @@ const Preview = ({ content }: PreviewProps) => {
           <span>{copied ? '已复制' : '复制到小红书'}</span>
         </button>
       </div>
-          <div className="overflow-hidden">
-                {/* <img 
-                  src="/assets/natural-titanium.png"
-                  className="absolute inset-0 w-full h-full pointer-events-none z-10"
-                  alt="手机模型"
-                /> */}
-            <div className="preview-wrapper">
-              <div className="preview-content">
-                <div className="account-info">
-                <img src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31f47v7hjmi0g49vnnuinpagik4nq6po?imageView2/1/w/540/format/jpg" alt="" className="icon" />
-                <span className="name">恩仔不睡觉</span>
+      <div className="phone">
+        <div className="preview-wrapper">
+          <div className="preview-content">
+            <div className="account-info">
+            <img src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31f47v7hjmi0g49vnnuinpagik4nq6po?imageView2/1/w/540/format/jpg" alt="" className="icon" />
+            <span className="name">马里奥秒</span>
+            </div>
+            <div className="content-wrapper">
+              <div className="image-wrapper">
+              <img src="https://sns-webpic-qc.xhscdn.com/202503261457/c43435534603052e482e6d5cf96da8dd/notes_pre_post/1040g3k831dn0pt90gsb049vnnuinpagijho4ae8!nd_dft_wlteh_webp_3" alt="" className="image" />
+              </div>
+              <div className="inner"> 
+                <div className="title">Plog|新人博主来报道</div>
+                  <EditorContent editor={editor}  className="content" />
+              </div>
+              <div className="comment">
+                <div className="time">
+                  编辑于 {formatDateTime(time)} · 公开可见
                 </div>
-                <div className="content-wrapper">
-                  <div className="image-wrapper">
-                  <img src="https://sns-webpic-qc.xhscdn.com/202503261457/c43435534603052e482e6d5cf96da8dd/notes_pre_post/1040g3k831dn0pt90gsb049vnnuinpagijho4ae8!nd_dft_wlteh_webp_3" alt="" className="image" />
-                  </div>
-                  <div className="inner"> 
-                    <div className="title"> test</div>
-                    {/* <div className="content" dangerouslySetInnerHTML={{ __html: content }}></div> */}
-                      <EditorContent editor={editor}  className="content" />
-                  </div>
-                  <div className="comment">
-                    <div className="time">
-                      编辑于 2025-03-26 09:44 · 公开可见
-                    </div>
-                      <img data-v-0e7feff9="" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31f47v7hjmi0g49vnnuinpagik4nq6po?imageView2/1/w/540/format/jpg" alt="" className="avatar" />
-                      <img  src="https://fe-static.xhscdn.com/formula-static/ugc/public/resource/image/comment.7a7ef26b.png" alt="" className="comment-bg" />
-                  </div>
-                </div>
+                  <img data-v-0e7feff9="" src="https://sns-avatar-qc.xhscdn.com/avatar/1040g2jo31f47v7hjmi0g49vnnuinpagik4nq6po?imageView2/1/w/540/format/jpg" alt="" className="avatar" />
+                  <img  src="https://fe-static.xhscdn.com/formula-static/ugc/public/resource/image/comment.7a7ef26b.png" alt="" className="comment-bg" />
               </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
   );
 };
