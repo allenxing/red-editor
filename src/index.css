@@ -15,12 +15,12 @@
   & p {
     margin-top: 0.35em;
     margin-bottom: 0.35em;
-    font-size: 0.875rem !important;
+    font-size: 0.875rem ;
   }
 
   /* 标题样式 */
   & h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem ;
     font-weight: 600;
     line-height: 1.3;
     margin-top: 0.75em;
@@ -28,7 +28,7 @@
   }
 
   & h2 {
-    font-size: 1.25rem !important;
+    font-size: 1.25rem ;
     font-weight: 600;
     line-height: 1.35;
     margin-top: 0.75em;
@@ -36,7 +36,7 @@
   }
 
   & h3 {
-    font-size: 1.1rem !important;
+    font-size: 1.1rem ;
     font-weight: 600;
     line-height: 1.4;
     margin-top: 0.75em;
@@ -44,7 +44,7 @@
   }
 
   & h4, & h5, & h6 {
-    font-size: 1rem !important;
+    font-size: 1rem ;
     font-weight: 600;
     line-height: 1.4;
     margin-top: 0.75em;
@@ -53,13 +53,13 @@
 
   /* 列表样式 */
   & ul, & ol {
-    font-size: 0.875rem !important;
+    font-size: 0.875rem ;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
   }
 
   & li {
-    font-size: 0.875rem !important;
+    font-size: 0.875rem ;
     margin-top: 0.25em;
     margin-bottom: 0.25em;
   }
@@ -83,8 +83,8 @@
 }
 
 .prose-compact {
-  font-size: 0.875rem !important;
-  line-height: 1.5 !important;
+  font-size: 0.875rem ;
+  line-height: 1.5 ;
 
   /* Reduce spacing in preview */
   & p {
@@ -94,22 +94,22 @@
   }
   
   & h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.5rem ;
     font-weight: 600;
   }
 
   & h2 {
-    font-size: 1.25rem !important;
+    font-size: 1.25rem ;
     font-weight: 600;
   }
 
   & h3 {
-    font-size: 1.1rem !important;
+    font-size: 1.1rem ;
     font-weight: 600;
   }
 
   & h4, & h5, & h6 {
-    font-size: 1rem !important;
+    font-size: 1rem ;
     font-weight: 600;
   }
 
@@ -150,4 +150,121 @@
 /* 确保字体可以正确应用 */
 [style*="font-family"] {
   font-family: inherit;
+}
+
+@layer components {
+  .preview-wrapper {
+    
+    /* @apply w-[282px] h-[612px] bg-[url("assets/natural-titanium.png")] bg-cover bg-center; */
+    /* @apply  w-[320px] h-[642px] bg-[url("assets/blue.svg")]; */
+
+    @apply  w-[252px] h-[544px]  bg-[url("assets/note.png")];
+    border-radius: 29px;
+    background-size: 100% 100%;
+    margin: 10px auto;
+  }
+  .account-info {
+    /* @apply bg-[url("assets/natural-titanium.png")] bg-cover bg-center; */
+    position: absolute;
+    top: 37px;
+    left: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .icon {
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .name {
+      font-weight: 500;
+      font-size: 9px;
+      margin-left: 8px;
+      font-family: "PingFang SC";
+      color: #333;
+    }
+  }
+  .preview-content {
+    padding-top: 65px;
+    width: 100%;
+    height: 490px;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+  } 
+  .content-wrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .ProseMirror, .prose-compact {
+      padding: 0;
+      & p {
+        font-size: 10px;
+        text-rendering: optimizeLegibility;
+      }
+    }
+
+
+    .inner {
+      margin-top: 8px;
+      padding: 0 10px;
+    }
+    & .content {
+      outline: none;
+      overflow-y: auto;
+      text-rendering: optimizeLegibility;
+      font-size: 10px;
+      margin: 4px 0;
+      line-height: 160%;
+    }
+    & .title {
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 12px;
+      font-family: "PingFang SC";
+      font-style: normal;
+      line-height: 18.816px;
+    }
+    /* & p {
+      @apply m-0;
+    }
+    & p:empty{
+      height: 16px;
+    } */
+    .comment {
+      width: 100%;
+      height: auto;
+      position: relative;
+      padding: 1px;
+    }
+    .time {
+      display: flex;
+      align-items: center;
+      color: rgba(0, 0, 0, 0.45);
+      font-family: "PingFang SC";
+      font-size: 8.064px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 12px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+    .avatar {
+      position: absolute;
+      top: 42px;
+      left: 10px;
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .comment-bg {
+      width: 100%;
+      margin-top: 30px;
+      height: auto;
+    }
+  }
 }

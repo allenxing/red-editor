@@ -44,14 +44,14 @@ const FontMenu = ({ editor }: { editor: Editor }) => {
     <BubbleMenu 
       editor={editor} 
       tippyOptions={{ duration: 100 }}
-      className="flex flex-wrap bg-white rounded-lg shadow-lg p-2 gap-1 max-w-[400px] border border-gray-200"
+      className="flex flex-wrap bg-white rounded-lg shadow-lg p-1 gap-1  border border-gray-200 justify-between"
     >
       {Object.entries(specialCharMap).map(([style, { name }]) => (
         <button
           key={style}
           onClick={() => applySpecialStyle(style as keyof typeof specialCharMap)}
-          className="px-3 py-1.5 text-sm rounded-md hover:bg-gray-100 transition-colors
-            flex items-center justify-center min-w-[80px]
+          className="px-2 py-1 text-xs rounded-md hover:bg-gray-100 transition-colors
+            flex items-center justify-center min-w-[60px]
             border border-gray-100 hover:border-gray-200"
         >
           <span className="font-medium">{name}</span>

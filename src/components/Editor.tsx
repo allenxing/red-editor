@@ -26,7 +26,7 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
         types: ['textStyle'],
       }),
       Placeholder.configure({
-        placeholder: '写下你的故事...',
+        placeholder: 'Type / to add emoji',
       }),
       Image,
       SlashCommand.configure({
@@ -135,8 +135,6 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
             tr.deleteSelection();
           }
 
-          console.log(lines);
-
           lines.reverse().forEach((line, index) => {
             const paragraph = {
               type: 'paragraph',
@@ -175,7 +173,7 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
       <div className="border-b border-gray-200 p-4">
         <div className="flex items-center space-x-4">
           <button
-            onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+            // onClick={() => setShowEmojiPicker(!showEmojiPicker)}
             className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
           >
             <Smile className="w-5 h-5 text-gray-600" />
