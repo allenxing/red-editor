@@ -158,7 +158,7 @@
     /* @apply w-[282px] h-[612px] bg-[url("assets/natural-titanium.png")] bg-cover bg-center; */
     /* @apply  w-[320px] h-[642px] bg-[url("assets/blue.svg")]; */
 
-    @apply  w-[252px] h-[544px]  bg-[url("assets/note.png")];
+    @apply  w-[252px] h-[544px]  bg-[url("/assets/note.png")];
     border-radius: 29px;
     background-size: 100% 100%;
     margin: 10px auto;
