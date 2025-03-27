@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 /* 共享的编辑器和预览样式 */
+.prose {
+  max-width: unset ;
+}
 .ProseMirror,
 .prose-compact {
   min-height: 500px;

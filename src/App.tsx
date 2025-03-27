@@ -30,8 +30,10 @@ function App() {
           <div className=" lg:block lg:col-span-2">
             <Preview content={content} />
           </div>
-          <div className=" lg:block lg:col-span-1">
-            <PhonePreview content={content} />
+          <div className="lg:block lg:col-span-1">
+            <div className="sticky top-4 self-start"> {/* 新增sticky容器 */}
+              <PhonePreview content={content} />
+            </div>
           </div>
           {/* 更新右侧预览区域 */}
           {/* <div className="bg-white rounded-lg shadow-sm overflow-hidden">
