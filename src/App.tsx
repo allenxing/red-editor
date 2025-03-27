@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Editor from './components/Editor';
 import Preview from './components/Preview';
 import PhonePreview from './components/PhonePreview';
-import { Pencil, Phone, Smartphone } from 'lucide-react'; // 新增Smartphone图标
+import { Pencil } from 'lucide-react'; // 新增Smartphone图标
+import { storageKey, setLocalStorage } from './utils/storage';
 
 function App() {
   const [content, setContent] = useState('');
+  useEffect(() => {
+    setLocalStorage(storageKey, content);
+  }, [content]);
 
   return (
     <div className="min-h-screen bg-gray-50">

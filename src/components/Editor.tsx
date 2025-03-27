@@ -13,6 +13,9 @@ import FontMenu from './FontMenu';
 import TextStyle from '@tiptap/extension-text-style';
 import FontFamily from '@tiptap/extension-font-family';
 
+import { storageKey, getLocalStorage} from '../utils/storage';
+const initialContent = getLocalStorage(storageKey) || '' ;
+
 const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
@@ -160,6 +163,12 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
     onUpdate: ({ editor }) => {
       onUpdate(editor.getHTML());
     },
+    onCreate(props) {
+      if(props.editor){
+        onUpdate(props.editor.getHTML());
+      }
+    },
+    content: initialContent,
   });
 
   const onEmojiSelect = (emoji: any) => {
