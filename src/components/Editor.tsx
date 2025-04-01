@@ -134,11 +134,16 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
           });
           
           const tr = view.state.tr;
+          const { from } = view.state.selection;
+          
           if (!view.state.selection.empty) {
             tr.deleteSelection();
           }
-
-          lines.reverse().forEach((line, index) => {
+      
+          // 计算最终光标位置
+          let cursorPos = from;
+          
+          lines.forEach((line) => {
             const paragraph = {
               type: 'paragraph',
               content: line.trim() ? [{
@@ -146,14 +151,17 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
                 text: line
               }] : undefined
             };
-          
-
+            
             const node = view.state.schema.nodeFromJSON(paragraph);
             if (node) {
-              tr.insert(tr.selection.from, node);
+              tr.insert(cursorPos, node);
+              cursorPos += node.nodeSize; // 更新光标位置
             }
           });
-
+      
+          // 设置最终光标位置
+          tr.setSelection(view.state.selection.constructor.near(tr.doc.resolve(cursorPos)));
+          
           view.dispatch(tr);
         }
         
