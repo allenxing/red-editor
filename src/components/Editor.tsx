@@ -124,49 +124,49 @@ const Editor = ({ onUpdate }: { onUpdate: (content: string) => void }) => {
       attributes: {
         class: 'prose prose-sm focus:outline-none',
       },
-      handlePaste: (view, event) => {
-        event.preventDefault();
+      // handlePaste: (view, event) => {
+      //   event.preventDefault();
         
-        const text = event.clipboardData?.getData('text/plain');
-        if (text) {
-          const lines = text.split(/\r?\n/).filter((line, index, array) => {
-            return index < array.length - 1 || line.trim() !== '';
-          });
+      //   const text = event.clipboardData?.getData('text/plain');
+      //   if (text) {
+      //     const lines = text.split(/\r?\n/).filter((line, index, array) => {
+      //       return index < array.length - 1 || line.trim() !== '';
+      //     });
           
-          const tr = view.state.tr;
-          const { from } = view.state.selection;
+      //     const tr = view.state.tr;
+      //     const { from } = view.state.selection;
           
-          if (!view.state.selection.empty) {
-            tr.deleteSelection();
-          }
+      //     if (!view.state.selection.empty) {
+      //       tr.deleteSelection();
+      //     }
       
-          // 计算最终光标位置
-          let cursorPos = from;
+      //     // 计算最终光标位置
+      //     let cursorPos = from;
           
-          lines.forEach((line) => {
-            const paragraph = {
-              type: 'paragraph',
-              content: line.trim() ? [{
-                type: 'text',
-                text: line
-              }] : undefined
-            };
+      //     lines.forEach((line) => {
+      //       const paragraph = {
+      //         type: 'paragraph',
+      //         content: line.trim() ? [{
+      //           type: 'text',
+      //           text: line
+      //         }] : undefined
+      //       };
             
-            const node = view.state.schema.nodeFromJSON(paragraph);
-            if (node) {
-              tr.insert(cursorPos, node);
-              cursorPos += node.nodeSize; // 更新光标位置
-            }
-          });
+      //       const node = view.state.schema.nodeFromJSON(paragraph);
+      //       if (node) {
+      //         tr.insert(cursorPos, node);
+      //         cursorPos += node.nodeSize; // 更新光标位置
+      //       }
+      //     });
       
-          // 设置最终光标位置
-          tr.setSelection(view.state.selection.constructor.near(tr.doc.resolve(cursorPos)));
+      //     // 设置最终光标位置
+      //     tr.setSelection(view.state.selection.constructor.near(tr.doc.resolve(cursorPos)));
           
-          view.dispatch(tr);
-        }
+      //     view.dispatch(tr);
+      //   }
         
-        return true;
-      },
+      //   return true;
+      // },
     },
     onUpdate: ({ editor }) => {
       onUpdate(editor.getHTML());

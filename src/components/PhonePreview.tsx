@@ -68,7 +68,7 @@ const Preview = ({ content }: PreviewProps) => {
         const textContent = content.content
           .map(node => {
             // 如果是空段落，返回空字符串
-            if (!node.content) return '';
+            if (!node.content) return ' ';
             // 否则返回段落中的文本内容
             return node.content.map((n: any) => n.text).join('');
           })
